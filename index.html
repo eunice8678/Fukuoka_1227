@@ -3,540 +3,1039 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>九州 9 天行程｜熊本進・福岡出（2026/12/27–2027/1/4）</title>
+  <title>九州 9 天旅帖｜熊本進・福岡出（內田正泰光影版畫風格）</title>
   <style>
     :root {
-      --bg: #f6f7f9;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --primary: #1d4ed8;
-      --primary-soft: #eff6ff;
-      --accent: #0f766e;
-      --accent-soft: #f0fdfa;
-      --warn: #b45309;
-      --warn-soft: #fffbeb;
-      --border: #e5e7eb;
-      --radius: 14px;
-      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      --paper: #f7f3ea;
+      --paper-elev: #fffdf9;
+      --paper-shadow: #e6dfd1;
+      --ink: #1d2939;
+      --ink-muted: #5c6672;
+      --indigo: #1e3a5f;
+      --indigo-soft: #e8eff6;
+      --pine: #24594d;
+      --pine-soft: #e6f1ee;
+      --sun: #c87d20;
+      --sun-soft: #fdf3e3;
+      --vermilion: #b83b2a;
+      --border: #dcd3c2;
+      --radius: 16px;
+      --shadow-card: 0 10px 26px rgba(29, 41, 57, 0.08), 0 2px 6px rgba(29, 41, 57, 0.05);
+      --nav-height: 68px;
+    }
+
+    body.night-cut {
+      --paper: #16202a;
+      --paper-elev: #1e2b38;
+      --paper-shadow: #0f171f;
+      --ink: #f3efe6;
+      --ink-muted: #b6c0ca;
+      --indigo: #7fb3d5;
+      --indigo-soft: rgba(127, 179, 213, 0.14);
+      --pine: #76c7b7;
+      --pine-soft: rgba(118, 199, 183, 0.14);
+      --sun: #f2b866;
+      --sun-soft: rgba(242, 184, 102, 0.14);
+      --vermilion: #f07b6b;
+      --border: #2e3f50;
+      --shadow-card: 0 12px 28px rgba(0, 0, 0, 0.35);
     }
 
     * {
       box-sizing: border-box;
     }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+    html {
+      scroll-behavior: smooth;
     }
 
-    header {
-      background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%);
-      color: #fff;
-      padding: 28px 18px 24px;
+    body {
+      margin: 0;
+      font-family: "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.68;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    /* 內田正泰風格：層疊紙雕光影與風景剪影頂部 */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 24%, rgba(242, 184, 102, 0.42), transparent 34%),
+        linear-gradient(165deg, #1b3654 0%, #26544a 62%, #1a2c3d 100%);
+      color: #fdfaf3;
+      padding: 34px 18px 54px;
+    }
+
+    .silhouette-layer {
+      position: absolute;
+      inset: auto 0 0 0;
+      width: 100%;
+      height: 78px;
+      pointer-events: none;
+      opacity: 0.92;
     }
 
     .container {
-      max-width: 980px;
+      max-width: 1040px;
       margin: 0 auto;
       padding: 0 16px;
+      position: relative;
+      z-index: 2;
     }
 
-    header .container {
-      padding: 0 4px;
+    .hero-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .seal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1.5px solid rgba(255, 245, 224, 0.55);
+      background: rgba(184, 59, 42, 0.85);
+      color: #fff8eb;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 253, 249, 0.16);
+      color: #fffdf9;
+      border: 1px solid rgba(255, 253, 249, 0.35);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.86rem;
+      font-family: inherit;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 253, 249, 0.26);
+      transform: translateY(-1px);
     }
 
     h1 {
       margin: 0 0 8px;
-      font-size: clamp(1.45rem, 4vw, 2.1rem);
+      font-size: clamp(1.5rem, 4.2vw, 2.25rem);
       font-weight: 700;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
     }
 
-    .subtitle {
+    .hero-sub {
       margin: 0 0 16px;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(253, 250, 243, 0.92);
       font-size: 0.96rem;
     }
 
-    .badges {
+    .meta-pills {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
-    .badge {
-      background: rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: #fff;
-      padding: 5px 11px;
+    .meta-pill {
+      background: rgba(255, 253, 249, 0.14);
+      border: 1px solid rgba(255, 253, 249, 0.28);
+      padding: 5px 12px;
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
     }
 
-    .notice-banner {
-      margin: 18px auto 10px;
-      background: var(--warn-soft);
-      border: 1px solid #fde68a;
-      color: #78350f;
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      font-size: 0.92rem;
-    }
-
-    .notice-banner strong {
-      color: var(--warn);
-    }
-
-    .day-nav-wrap {
+    /* 互動天數列：支援滑鼠/手指拖拉、左右箭頭與快速切換 */
+    .sticky-nav {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(246, 247, 249, 0.92);
-      backdrop-filter: blur(8px);
+      z-index: 40;
+      height: var(--nav-height);
+      background: var(--paper-elev);
       border-bottom: 1px solid var(--border);
-      padding: 10px 0;
+      box-shadow: 0 4px 14px rgba(29, 41, 57, 0.06);
+      display: flex;
+      align-items: center;
     }
 
-    .day-tabs {
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .nav-arrow {
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 1rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.18s ease;
+    }
+
+    .nav-arrow:hover {
+      border-color: var(--indigo);
+      color: var(--indigo);
+      background: var(--indigo-soft);
+    }
+
+    .day-scroller {
+      flex: 1 1 auto;
       display: flex;
       gap: 8px;
       overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: auto;
+      cursor: grab;
+      user-select: none;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding-bottom: 2px;
+      padding: 6px 2px;
     }
 
-    .day-tabs::-webkit-scrollbar {
+    .day-scroller::-webkit-scrollbar {
       display: none;
     }
 
-    .day-tab {
+    .day-scroller.dragging {
+      cursor: grabbing;
+    }
+
+    .day-btn {
       flex: 0 0 auto;
       border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      padding: 8px 14px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 7px 14px;
       border-radius: 999px;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 600;
+      font-family: inherit;
       cursor: pointer;
+      white-space: nowrap;
       transition: all 0.2s ease;
     }
 
-    .day-tab:hover {
-      border-color: var(--primary);
-      color: var(--primary);
+    .day-btn:hover {
+      border-color: var(--pine);
+      color: var(--pine);
     }
 
-    .day-tab.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
+    .day-btn.active {
+      background: var(--indigo);
+      border-color: var(--indigo);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(30, 58, 95, 0.25);
+    }
+
+    body.night-cut .day-btn.active {
+      color: #131c24;
     }
 
     main {
-      padding: 18px 0 40px;
+      padding: 20px 0 56px;
     }
 
-    .day-card {
-      background: var(--card);
+    .toolbar-panel {
+      background: var(--paper-elev);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 20px;
+      padding: 14px 16px;
       margin-bottom: 18px;
-    }
-
-    .day-header {
+      box-shadow: var(--shadow-card);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .toolbar-note {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      margin: 0;
+    }
+
+    .toolbar-note strong {
+      color: var(--vermilion);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
-      border-bottom: 1px solid var(--border);
+    }
+
+    .chip-btn {
+      border: 1px solid var(--border);
+      background: var(--paper);
+      color: var(--ink);
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .chip-btn:hover,
+    .chip-btn.active {
+      background: var(--pine-soft);
+      border-color: var(--pine);
+      color: var(--pine);
+      font-weight: 600;
+    }
+
+    /* 行程卡片 */
+    .day-card {
+      scroll-margin-top: calc(var(--nav-height) + 14px);
+      background: var(--paper-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-card);
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .day-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 20px;
+      right: 20px;
+      height: 3px;
+      border-radius: 0 0 6px 6px;
+      background: linear-gradient(90deg, var(--indigo), var(--pine), var(--sun));
+      opacity: 0.75;
+    }
+
+    .day-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
       padding-bottom: 12px;
       margin-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
     }
 
-    .day-title {
-      margin: 0;
-      font-size: 1.25rem;
-      color: #111827;
+    .day-title-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px;
     }
 
-    .day-date {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--primary);
-      background: var(--primary-soft);
+    .day-tag {
+      background: var(--indigo-soft);
+      color: var(--indigo);
+      font-weight: 700;
+      font-size: 0.88rem;
       padding: 4px 10px;
       border-radius: 8px;
     }
 
-    .grid-2 {
+    .day-title {
+      margin: 0;
+      font-size: clamp(1.12rem, 2.5vw, 1.38rem);
+    }
+
+    .map-route-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      background: var(--pine);
+      color: #ffffff;
+      padding: 7px 13px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+
+    body.night-cut .map-route-btn {
+      color: #101920;
+    }
+
+    .map-route-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .cards-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 14px;
     }
 
-    @media (min-width: 768px) {
-      .grid-2 {
-        grid-template-columns: 1.15fr 0.85fr;
+    @media (min-width: 820px) {
+      .cards-grid {
+        grid-template-columns: 1.2fr 0.8fr;
       }
     }
 
-    .section-box {
+    .box {
+      background: var(--paper);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 14px 16px;
-      background: #fafafa;
     }
 
-    .section-box h3 {
-      margin: 0 0 8px;
+    .box h3 {
+      margin: 0 0 10px;
       font-size: 0.98rem;
-      color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .section-box ul {
+    .timeline-item {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .time-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--sun);
+      background: var(--sun-soft);
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+    }
+
+    .item-main {
+      font-size: 0.94rem;
+      margin: 2px 0 6px;
+    }
+
+    .pin-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .gmap-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--paper-elev);
+      color: var(--indigo);
+      font-weight: 600;
+      transition: all 0.16s ease;
+    }
+
+    .gmap-pill.food {
+      color: var(--vermilion);
+    }
+
+    .gmap-pill:hover {
+      border-color: var(--indigo);
+      background: var(--indigo-soft);
+    }
+
+    .gmap-pill.food:hover {
+      border-color: var(--vermilion);
+      background: rgba(184, 59, 42, 0.1);
+    }
+
+    .transport-list {
       margin: 0;
       padding-left: 18px;
     }
 
-    .section-box li {
-      margin-bottom: 6px;
-      font-size: 0.93rem;
+    .transport-list li {
+      margin-bottom: 8px;
+      font-size: 0.92rem;
     }
 
-    .transport-box {
-      background: var(--accent-soft);
-      border-color: #99f6e4;
-    }
-
-    .transport-box h3 {
-      color: var(--accent);
-    }
-
-    .note-box {
+    .tip-strip {
       margin-top: 12px;
-      background: var(--warn-soft);
-      border: 1px solid #fde68a;
-      border-radius: 10px;
+      background: var(--sun-soft);
+      border-left: 4px solid var(--sun);
+      border-radius: 8px;
       padding: 10px 14px;
-      font-size: 0.88rem;
-      color: #78350f;
+      font-size: 0.89rem;
     }
 
-    .summary-card {
-      background: var(--card);
+    /* 互動行前檢核清單 */
+    .checklist-section {
+      margin-top: 26px;
+      background: var(--paper-elev);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
       padding: 20px;
-      margin-top: 24px;
+      box-shadow: var(--shadow-card);
     }
 
-    .summary-card h2 {
-      margin: 0 0 12px;
-      font-size: 1.18rem;
+    .checklist-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
     }
 
-    .ticket-list {
+    .checklist-head h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .progress-text {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--pine);
+      background: var(--pine-soft);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .check-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 10px;
     }
 
-    @media (min-width: 640px) {
-      .ticket-list {
+    @media (min-width: 680px) {
+      .check-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    .ticket-item {
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--paper);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-      background: #fcfcfd;
+      border-radius: 10px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-size: 0.9rem;
     }
 
-    .ticket-item strong {
-      display: block;
-      margin-bottom: 4px;
-      color: #111827;
+    .check-item input {
+      margin-top: 3px;
+      accent-color: var(--pine);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
     }
 
-    .ticket-item span {
-      font-size: 0.88rem;
-      color: var(--muted);
+    .check-item.done span {
+      text-decoration: line-through;
+      color: var(--ink-muted);
     }
 
     footer {
       text-align: center;
-      color: var(--muted);
+      color: var(--ink-muted);
       font-size: 0.84rem;
-      padding: 12px 16px 32px;
+      padding: 12px 16px 36px;
     }
   </style>
 </head>
 <body>
-  <header>
+  <header class="hero">
     <div class="container">
+      <div class="hero-top">
+        <span class="seal-badge">光影旅帖・九天八夜</span>
+        <button class="theme-toggle" id="themeBtn" type="button" aria-label="切換版畫光影模式">
+          <span id="themeIcon">🌙</span>
+          <span id="themeLabel">切換夜燈剪影</span>
+        </button>
+      </div>
       <h1>九州 9 天行程｜熊本進・福岡出</h1>
-      <p class="subtitle">2026/12/27 – 2027/1/4｜星宇早去晚回（JX846 去／JX841 回）｜跨年末年始與 RWD 行程表</p>
-      <div class="badges">
-        <span class="badge">去程 12/27 07:30 TPE → 10:35 KMJ</span>
-        <span class="badge">回程 1/4 19:10 FUK → 20:50 TPE</span>
-        <span class="badge">不硬排阿蘇山區・節奏穩健</span>
+      <p class="hero-sub">2026/12/27 – 2027/1/4・星宇早去晚回（JX846 去 / JX841 回）・內田正泰紙雕光影版畫美學</p>
+      <div class="meta-pills">
+        <span class="meta-pill">✈️ 去程 12/27 07:30 TPE → 10:35 KMJ</span>
+        <span class="meta-pill">✈️ 回程 1/4 19:10 FUK → 20:50 TPE</span>
+        <span class="meta-pill">📍 每站與餐廳皆附 Google Maps</span>
       </div>
     </div>
+
+    <!-- 內田正泰風格：山稜、松林與旅人剪影底層 -->
+    <svg class="silhouette-layer" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,100 L0,56 Q180,22 360,52 T760,44 T1200,58 L1200,100 Z" fill="rgba(16, 28, 40, 0.45)"></path>
+      <path d="M0,100 L0,72 Q260,48 540,68 T1200,64 L1200,100 Z" fill="var(--paper)"></path>
+    </svg>
   </header>
 
-  <div class="day-nav-wrap">
-    <div class="container">
-      <div class="day-tabs" id="dayTabs" role="tablist" aria-label="行程天數切換"></div>
+  <nav class="sticky-nav" aria-label="天數導覽">
+    <div class="container nav-inner">
+      <button class="nav-arrow" id="scrollLeftBtn" type="button" title="向左滑動天數">‹</button>
+      <div class="day-scroller" id="dayScroller" role="tablist"></div>
+      <button class="nav-arrow" id="scrollRightBtn" type="button" title="向右滑動天數">›</button>
     </div>
-  </div>
-
-  <div class="container">
-    <div class="notice-banner">
-      <strong>年末年始提醒：</strong>熊本城往年 <strong>12/29</strong> 例行休園，已排在 <strong>12/28（Day 2）</strong>；<strong>12/31</strong> 多數店家提早打烊、<strong>1/1</strong> 許多商場／餐廳休息、<strong>1/2</strong> 起迎來新年初賣。若 Day 3 當天看天氣極佳想顺路看草千里，可作為彈性備案。
-    </div>
-  </div>
+  </nav>
 
   <main class="container">
-    <div id="itineraryContainer"></div>
-
-    <section class="summary-card">
-      <h2>票券與交通重點整理</h2>
-      <div class="ticket-list">
-        <div class="ticket-item">
-          <strong>1. 西鐵「太宰府・柳川觀光套票」（2 日券）</strong>
-          <span>建議於 Day 7（1/2）啟用，連用 Day 7 太宰府與 Day 8 柳川遊船，比單買划算。</span>
-        </div>
-        <div class="ticket-item">
-          <strong>2. 福岡市地下鐵＆熊本市電</strong>
-          <span>福岡地鐵刷同一張信用卡享單日最高 640 日圓封頂；熊本市電單程約 200 日圓，單日搭 3 趟可買手機版 500 日圓一日券。</span>
-        </div>
-        <div class="ticket-item">
-          <strong>3. 跨縣巴士與特急列車預約</strong>
-          <span>1/1 湯布院→博多「由布號」高速巴士或 JR 特急（如由布院之森）建議提早線上預約座位，避開年末年始客滿。</span>
-        </div>
-        <div class="ticket-item">
-          <strong>4. 返程機場接駁（Day 9）</strong>
-          <span>福岡市地下鐵機場線至福岡機場站約 5 分鐘，出站轉搭免費接駁巴士至國際線航廈，建議約 16:00–16:30 出發。</span>
-        </div>
+    <div class="toolbar-panel">
+      <p class="toolbar-note">
+        <strong>年末年始提醒：</strong>熊本城往年 12/29 例行休園（已排 12/28）；12/31 店家早關、1/1 許多店休、1/2 起新年初賣。點選任一「開啟地圖」即可跳轉 Google Maps。
+      </p>
+      <div class="toolbar-actions">
+        <button class="chip-btn active" id="showAllBtn" type="button">顯示全部 9 天</button>
+        <button class="chip-btn" id="singleModeBtn" type="button">單日焦點模式</button>
       </div>
+    </div>
+
+    <div id="daysContainer"></div>
+
+    <section class="checklist-section" aria-label="行前預約與採買清單">
+      <div class="checklist-head">
+        <h2>行前預約與準備清單（自動儲存）</h2>
+        <span class="progress-text" id="progressText">已完成 0 / 6</span>
+      </div>
+      <div class="check-grid" id="checklistGrid"></div>
     </section>
   </main>
 
   <footer>
-    實際班次、票價、門票與年末年始營業時間請以各官方公告為準。
+    實際營業時間、車次、門票與年末年始特殊安排請依各官方公告為準。
   </footer>
 
   <script>
-    const days = [
+    const gmapSearch = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+    const gmapDir = (origin, dest) =>
+      `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(dest)}&travelmode=transit`;
+
+    const itinerary = [
       {
         day: "Day 1",
         date: "12/27（日）",
         title: "抵達熊本・水前寺庭園與上下通散策",
-        schedule: [
-          "10:35 抵達熊本機場，入境領行李後前往市區寄放行李",
-          "午餐：黑亭拉麵 或 赤牛丼",
-          "下午：水前寺成趣園（門票約 400 日圓）、熊本熊部長辦公室（留意開放與見面時段）",
-          "傍晚～晚餐：上通・下通商店街逛街，晚餐推薦勝烈亭 新市街本店 或 紅蘭亭"
+        mapLink: gmapDir("熊本機場", "下通商店街 熊本"),
+        items: [
+          {
+            time: "10:35–12:45",
+            desc: "搭乘星宇 JX846 抵達熊本機場，搭利木津巴士進市區寄放行李。",
+            pins: [{ label: "📍 熊本機場", url: gmapSearch("熊本機場") }]
+          },
+          {
+            time: "13:00–14:30",
+            desc: "午餐：黑亭拉麵 或 赤牛丼。",
+            pins: [
+              { label: "🍜 黑亭拉麵", food: true, url: gmapSearch("黑亭拉麵 熊本") },
+              { label: "🥩 赤牛丼 熊本市區", food: true, url: gmapSearch("赤牛丼 熊本市區") }
+            ]
+          },
+          {
+            time: "14:45–19:00",
+            desc: "水前寺成趣園（門票約 400 日圓）、熊本熊部長辦公室 → 上通・下通商店街。",
+            pins: [
+              { label: "📍 水前寺成趣園", url: gmapSearch("水前寺成趣園") },
+              { label: "📍 上通・下通商店街", url: gmapSearch("熊本 下通商店街") }
+            ]
+          },
+          {
+            time: "19:00–21:00",
+            desc: "晚餐：勝烈亭 新市街本店 或 紅蘭亭 下通本店。",
+            pins: [
+              { label: "🐖 勝烈亭 新市街本店", food: true, url: gmapSearch("勝烈亭 新市街本店") },
+              { label: "🍲 紅蘭亭 下通本店", food: true, url: gmapSearch("紅蘭亭 下通本店") }
+            ]
+          }
         ],
         transport: [
-          "熊本機場 → 市區：搭乘熊本機場利木津巴士（約 50–60 分鐘）",
-          "市區移動：熊本市電（單程均一約 200 日圓，當日搭 3 趟可考慮手機版 500 日圓一日券）"
+          "熊本機場 → 市區：熊本機場利木津巴士（約 50–60 分鐘）",
+          "市區移動：熊本市電（單程均一約 200 日圓，當日搭 3 趟可買手機版 500 日圓一日券）"
         ],
-        note: "第一天以適應氣候與市區逛街為主，順便確認隔天前往熊本城的路線。"
+        tip: "首日以適應氣溫與市區動線為主，順便熟悉熊本市電站牌。"
       },
       {
         day: "Day 2",
         date: "12/28（一）",
         title: "熊本城歷史巡禮・櫻町與熊本站商圈",
-        schedule: [
-          "上午：熊本城（成人門票約 800 日圓）＋ 加藤神社",
-          "中午：櫻之馬場 城彩苑散步吃小食，正餐可選菅乃屋或熊本鄉土料理",
-          "下午：SAKURA MACHI 櫻町熊本（約停留 1～1.5 小時買伴手禮與看頂樓景觀）",
-          "晚上：JR 熊本站商圈逛街，晚餐推薦天外天拉麵 或 天國馬肉料理"
+        mapLink: gmapDir("熊本城", "熊本站"),
+        items: [
+          {
+            time: "09:00–12:00",
+            desc: "熊本城（成人門票約 800 日圓）＋ 加藤神社。",
+            pins: [
+              { label: "📍 熊本城", url: gmapSearch("熊本城") },
+              { label: "📍 加藤神社", url: gmapSearch("加藤神社 熊本") }
+            ]
+          },
+          {
+            time: "12:15–14:00",
+            desc: "櫻之馬場 城彩苑散步吃小食；午餐可選 菅乃屋 或 馬肉料理。",
+            pins: [
+              { label: "📍 櫻之馬場 城彩苑", url: gmapSearch("櫻之馬場 城彩苑") },
+              { label: "🐎 菅乃屋 銀座通店", food: true, url: gmapSearch("菅乃屋 銀座通店") }
+            ]
+          },
+          {
+            time: "14:30–20:30",
+            desc: "SAKURA MACHI 櫻町熊本（停留約 1～1.5 小時即可）→ JR 熊本站商圈；晚餐 天外天拉麵 或 天國馬肉料理。",
+            pins: [
+              { label: "📍 SAKURA MACHI 櫻町熊本", url: gmapSearch("SAKURA MACHI 櫻町熊本") },
+              { label: "🍜 天外天拉麵 熊本站", food: true, url: gmapSearch("天外天拉麵 熊本站") }
+            ]
+          }
         ],
         transport: [
           "熊本城：搭熊本市電至「熊本城・市役所前」站步行",
           "熊本站：搭熊本市電 A 系統往返"
         ],
-        note: "避開往年 12/29 熊本城例行休園日，把重點古蹟排在今天最穩妥。"
+        tip: "避開往年 12/29 熊本城例行休園日，今天逛古蹟最穩當。"
       },
       {
         day: "Day 3",
         date: "12/29（二）",
         title: "從容移動至別府溫泉鄉・地獄巡禮",
-        schedule: [
-          "上午：熊本市區悠閒喝咖啡或補逛後，啟程前往別府溫泉鄉",
-          "下午：別府地獄溫泉巡禮（海地獄、灶地獄等，共通券約 2,200 日圓／單館約 450 日圓）",
-          "晚餐：東洋軒（雞肉天婦羅）或 とよ常 本店"
+        mapLink: gmapDir("熊本站", "別府地獄組合 海地獄"),
+        items: [
+          {
+            time: "上午",
+            desc: "熊本市區悠閒喝咖啡或補逛後，啟程前往別府溫泉鄉。",
+            pins: [{ label: "📍 別府站", url: gmapSearch("別府站") }]
+          },
+          {
+            time: "下午",
+            desc: "別府地獄溫泉巡禮（海地獄、灶地獄等，共通券約 2,200 日圓）。",
+            pins: [
+              { label: "📍 海地獄", url: gmapSearch("海地獄 別府") },
+              { label: "📍 灶地獄", url: gmapSearch("灶地獄 別府") }
+            ]
+          },
+          {
+            time: "晚餐",
+            desc: "東洋軒（雞肉天婦羅）或 とよ常 本店。",
+            pins: [
+              { label: "🍤 東洋軒 別府", food: true, url: gmapSearch("東洋軒 別府") },
+              { label: "🍣 とよ常 本店", food: true, url: gmapSearch("とよ常 本店 別府") }
+            ]
+          }
         ],
         transport: [
           "熊本 → 別府：搭乘跨縣高速巴士（需提前預約）或 JR 轉乘前往別府",
           "別府市內：搭乘龜之井巴士往返別府站與鐵輪地獄溫泉區"
         ],
-        note: "不硬排阿蘇山區與折返路線，直接往別府推進更順；若當天看天氣極佳想看草千里，可作彈性調整。"
+        tip: "不硬排阿蘇山區與折返路線，直接往別府推進更順；若當天看天氣極佳想看草千里，可作彈性調整。"
       },
       {
         day: "Day 4",
         date: "12/30（三）",
         title: "鐵輪蒸氣美食・鶴見岳纜車與溫泉放鬆",
-        schedule: [
-          "上午：鐵輪溫泉區散步，午餐體驗地獄蒸工房 鐵輪 或 龜正迴轉壽司",
-          "下午：別府空中纜車（鶴見岳纜車，來回票約 1,800 日圓）或海濱砂湯",
-          "晚上：胡月冷麵 或 溫泉飯店泡湯休息"
+        mapLink: gmapDir("鐵輪溫泉", "別府空中纜車"),
+        items: [
+          {
+            time: "上午～中午",
+            desc: "鐵輪溫泉區散步，午餐體驗 地獄蒸工房 鐵輪 或 龜正迴轉壽司。",
+            pins: [
+              { label: "♨️ 地獄蒸工房 鐵輪", food: true, url: gmapSearch("地獄蒸工房 鐵輪") },
+              { label: "🍣 龜正迴轉壽司", food: true, url: gmapSearch("龜正迴轉壽司 別府") }
+            ]
+          },
+          {
+            time: "下午",
+            desc: "別府空中纜車（鶴見岳纜車，來回票約 1,800 日圓）或海濱砂湯。",
+            pins: [
+              { label: "📍 別府空中纜車", url: gmapSearch("別府空中纜車") },
+              { label: "📍 別府海濱砂湯", url: gmapSearch("別府海濱砂湯") }
+            ]
+          },
+          {
+            time: "晚上",
+            desc: "晚餐 胡月冷麵 或 溫泉飯店泡湯休息。",
+            pins: [{ label: "🍜 胡月冷麵", food: true, url: gmapSearch("胡月 別府") }]
+          }
         ],
         transport: [
           "別府市區 ↔ 鐵輪／別府纜車：搭乘龜之井巴士"
         ],
-        note: "冬季山上風大氣溫低，搭纜車或戶外散步請備妥保暖外套與防滑鞋。"
+        tip: "冬季山上風大氣溫低，搭纜車或戶外散步請備妥保暖外套。"
       },
       {
         day: "Day 5",
         date: "12/31（四）",
         title: "湯布院金鱗湖・湯之坪街道跨年夜",
-        schedule: [
-          "上午：自別府前往湯布院，逛金鱗湖與周邊小徑",
-          "中午：由布まぶし 心（釜飯）",
-          "下午：湯之坪街道逛街、買甜點（12/31 店家較早打烊，建議早點買）",
-          "跨年夜：建議預訂溫泉旅館一泊二食，泡湯迎接新年"
+        mapLink: gmapDir("由布院站", "金鱗湖"),
+        items: [
+          {
+            time: "上午",
+            desc: "自別府前往湯布院，逛 金鱗湖 與周邊小徑。",
+            pins: [
+              { label: "📍 金鱗湖", url: gmapSearch("金鱗湖") },
+              { label: "📍 由布院站", url: gmapSearch("由布院站") }
+            ]
+          },
+          {
+            time: "中午",
+            desc: "午餐：由布まぶし 心（釜飯）。",
+            pins: [{ label: "🍚 由布まぶし 心", food: true, url: gmapSearch("由布まぶし 心") }]
+          },
+          {
+            time: "下午～跨年夜",
+            desc: "湯之坪街道逛街買甜點（12/31 店家較早打烊）；跨年夜建議預訂溫泉旅館一泊二食。",
+            pins: [{ label: "📍 湯之坪街道", url: gmapSearch("湯之坪街道") }]
+          }
         ],
         transport: [
           "別府 ↔ 湯布院：龜之井巴士 36 號線（約 55 分鐘）或 JR 久大本線特急（需預約）"
         ],
-        note: "12/31 許多餐廳與商店提早結束營業，跨年夜晚餐與住宿務必提前確認。"
+        tip: "12/31 許多餐廳與商店提早打烊，跨年夜晚餐與住宿務必提前確認。"
       },
       {
         day: "Day 6",
         date: "1/1（五）",
         title: "元旦移動至福岡博多・櫛田神社初詣",
-        schedule: [
-          "上午：自湯布院或別府移動至福岡博多，飯店寄放行李",
-          "下午：櫛田神社元旦初詣參拜 → 川端通商店街 → 博多運河城",
-          "晚餐：牛腸鍋 樂天地 或 一蘭 運河城店"
+        mapLink: gmapDir("博多巴士總站", "博多運河城"),
+        items: [
+          {
+            time: "上午",
+            desc: "自湯布院或別府移動至福岡博多，飯店寄放行李。",
+            pins: [{ label: "📍 博多站", url: gmapSearch("博多站") }]
+          },
+          {
+            time: "下午",
+            desc: "櫛田神社元旦初詣參拜 → 川端通商店街 → 博多運河城。",
+            pins: [
+              { label: "📍 櫛田神社", url: gmapSearch("櫛田神社 福岡") },
+              { label: "📍 博多運河城", url: gmapSearch("博多運河城") }
+            ]
+          },
+          {
+            time: "晚餐",
+            desc: "牛腸鍋 樂天地 或 一蘭 運河城店。",
+            pins: [
+              { label: "🍲 牛腸鍋 樂天地", food: true, url: gmapSearch("牛腸鍋 樂天地 博多") },
+              { label: "🍜 一蘭 運河城店", food: true, url: gmapSearch("一蘭 運河城") }
+            ]
+          }
         ],
         transport: [
           "湯布院 → 博多：高速巴士「由布號」（約 2 小時，需預約）或 JR 特急（需提前搶票）",
           "市區移動：福岡市地下鐵或步行"
         ],
-        note: "1/1 適逢日本元旦，不少百貨與小店休息，運河城與部分神社周邊較易營業。"
+        tip: "1/1 為日本元旦，不少百貨與小店休息，運河城與部分神社周邊較易營業。"
       },
       {
         day: "Day 7",
         date: "1/2（六）",
         title: "太宰府初詣・天神新年初賣與中洲屋台",
-        schedule: [
-          "上午：太宰府天滿宮參拜、吃現烤梅枝餅",
-          "中午：暖暮拉麵 或 葫蘆壽司",
-          "下午：天神商圈逛新年初賣／福袋（天神地下街、百貨商場）",
-          "晚上：中洲屋台街 或 博多名代 吉塚鰻魚屋"
+        mapLink: gmapDir("太宰府天滿宮", "中洲屋台"),
+        items: [
+          {
+            time: "上午",
+            desc: "太宰府天滿宮參拜、吃現烤梅枝餅。",
+            pins: [{ label: "📍 太宰府天滿宮", url: gmapSearch("太宰府天滿宮") }]
+          },
+          {
+            time: "中午",
+            desc: "午餐：暖暮拉麵 或 葫蘆壽司。",
+            pins: [
+              { label: "🍜 暖暮拉麵", food: true, url: gmapSearch("暖暮拉麵 太宰府") },
+              { label: "🍣 葫蘆壽司", food: true, url: gmapSearch("葫蘆壽司 天神") }
+            ]
+          },
+          {
+            time: "下午～晚上",
+            desc: "天神商圈逛新年初賣／福袋 → 晚餐 中洲屋台街 或 博多名代 吉塚鰻魚屋。",
+            pins: [
+              { label: "📍 天神地下街", url: gmapSearch("天神地下街") },
+              { label: "🍢 中洲屋台街", food: true, url: gmapSearch("中洲屋台") },
+              { label: "🍱 博多名代 吉塚鰻魚屋", food: true, url: gmapSearch("博多名代 吉塚鰻魚屋") }
+            ]
+          }
         ],
         transport: [
           "建議啟用西鐵「太宰府・柳川觀光套票」（2 日券），搭西鐵電車往返太宰府"
         ],
-        note: "1/2 初詣與商場初賣人潮眾多，熱門餐廳與電車建議錯開最尖峰時段。"
+        tip: "1/2 初詣與商場初賣人潮眾多，熱門餐廳與電車建議錯開尖峰。"
       },
       {
         day: "Day 8",
         date: "1/3（日）",
         title: "柳川暖桌遊船・大濠公園與福岡塔夜景",
-        schedule: [
-          "上午：柳川護城河遊船（冬季暖桌船），午餐吃元祖本吉屋 或 若松屋 蒸籠鰻魚飯",
-          "下午：大濠公園、福岡城跡／舞鶴公園散步",
-          "傍晚～晚上：福岡塔看夜景（門票約 1,000 日圓），晚餐 Shin-Shin 拉麵 或 極味屋"
+        mapLink: gmapDir("柳川遊船乘船處", "福岡塔"),
+        items: [
+          {
+            time: "上午～中午",
+            desc: "柳川護城河遊船（冬季暖桌船），午餐吃 元祖本吉屋 或 若松屋 蒸籠鰻魚飯。",
+            pins: [
+              { label: "📍 柳川遊船", url: gmapSearch("柳川 遊船 乘船場") },
+              { label: "🍱 元祖本吉屋", food: true, url: gmapSearch("元祖本吉屋 柳川") },
+              { label: "🍱 若松屋", food: true, url: gmapSearch("若松屋 柳川") }
+            ]
+          },
+          {
+            time: "下午～晚上",
+            desc: "大濠公園 → 福岡塔看夜景（門票約 1,000 日圓）；晚餐 Shin-Shin 拉麵 或 極味屋。",
+            pins: [
+              { label: "📍 大濠公園", url: gmapSearch("大濠公園") },
+              { label: "📍 福岡塔", url: gmapSearch("福岡塔") },
+              { label: "🥩 極味屋 博多", food: true, url: gmapSearch("極味屋 博多") }
+            ]
+          }
         ],
         transport: [
           "續用西鐵「太宰府・柳川觀光套票」搭西鐵特急往返柳川＋搭船",
           "市區移動：福岡市地下鐵（同一張信用卡單日最高 640 日圓封頂）＋公車"
         ],
-        note: "柳川遊船與鰻魚飯安排在上午至中午最順，下午回到福岡市區看夜景與吃晚餐。"
+        tip: "柳川遊船與鰻魚飯排在上午至中午最順，下午回到福岡市區看夜景與吃晚餐。"
       },
       {
         day: "Day 9",
         date: "1/4（一）",
         title: "博多最後補貨・星宇晚班機返台",
-        schedule: [
-          "上午：明太子法國麵包早餐（DACOMECCA 或 THE FULLFULL HAKATA）",
-          "中午～下午：博多車站／AMU PLAZA 最後伴手禮採買與午餐（利久牛舌或海鮮食堂）",
-          "16:00–16:30 左右前往福岡機場辦理登機與退稅，搭乘星宇 JX841（19:10 起飛）返台"
+        mapLink: gmapDir("博多站", "福岡機場 國際線航廈"),
+        items: [
+          {
+            time: "上午",
+            desc: "明太子法國麵包早餐：DACOMECCA 或 THE FULLFULL HAKATA。",
+            pins: [
+              { label: "🥖 DACOMECCA", food: true, url: gmapSearch("DACOMECCA 博多") },
+              { label: "🥖 THE FULLFULL HAKATA", food: true, url: gmapSearch("THE FULLFULL HAKATA") }
+            ]
+          },
+          {
+            time: "中午～下午",
+            desc: "博多車站／AMU PLAZA 最後伴手禮採買與午餐（利久牛舌或海鮮食堂）。",
+            pins: [
+              { label: "📍 AMU PLAZA 博多", url: gmapSearch("AMU PLAZA 博多") },
+              { label: "👅 利久牛舌 博多", food: true, url: gmapSearch("利久牛舌 博多") }
+            ]
+          },
+          {
+            time: "16:00–19:10",
+            desc: "約 16:00–16:30 前往福岡機場辦理登機與退稅，搭乘星宇 JX841（19:10 起飛）返台。",
+            pins: [{ label: "📍 福岡機場", url: gmapSearch("福岡機場") }]
+          }
         ],
         transport: [
           "博多站 → 福岡機場站：搭福岡市地下鐵機場線（約 5 分鐘），轉搭免費接駁巴士至國際線航廈"
         ],
-        note: "晚班機白天時間充裕，但國際線航廈需轉搭接駁巴士且旺季排隊較長，建議提早前往機場。"
+        tip: "晚班機白天時間充裕，但國際線航廈需轉搭接駁巴士且旺季排隊較長，建議提早前往機場。"
       }
     ];
 
-    const tabsEl = document.getElementById("dayTabs");
-    const containerEl = document.getElementById("itineraryContainer");
-    let activeFilter = "ALL";
+    const checklistItems = [
+      { id: "bus-kumamoto-beppu", text: "預約 12/29 熊本 → 別府跨縣高速巴士／交通座位" },
+      { id: "hotel-nye", text: "確認 12/31 跨年夜溫泉旅館一泊二食與晚餐安排" },
+      { id: "bus-yufuin-hakata", text: "預約 1/1 湯布院 → 博多「由布號」高速巴士或 JR 特急" },
+      { id: "nishitetsu-pass", text: "準備西鐵「太宰府・柳川觀光套票」（1/2 啟用連用兩天）" },
+      { id: "ic-card", text: "準備交通 IC 卡（Suica/ICOCA）與感應式信用卡" },
+      { id: "check-holidays", text: "再次核對 12/31～1/2 想去餐廳與商場的新年營業時間" }
+    ];
 
-    function renderTabs() {
-      const allBtn = document.createElement("button");
-      allBtn.className = "day-tab active";
-      allBtn.textContent = "全部 9 天";
-      allBtn.dataset.day = "ALL";
-      tabsEl.appendChild(allBtn);
+    const scrollerEl = document.getElementById("dayScroller");
+    const daysContainerEl = document.getElementById("daysContainer");
+    const showAllBtn = document.getElementById("showAllBtn");
+    const singleModeBtn = document.getElementById("singleModeBtn");
+    const scrollLeftBtn = document.getElementById("scrollLeftBtn");
+    const scrollRightBtn = document.getElementById("scrollRightBtn");
+    const themeBtn = document.getElementById("themeBtn");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeLabel = document.getElementById("themeLabel");
 
-      days.forEach((d) => {
-        const btn = document.createElement("button");
-        btn.className = "day-tab";
-        btn.textContent = `${d.day} ${d.date}`;
-        btn.dataset.day = d.day;
-        tabsEl.appendChild(btn);
-      });
+    let selectedDay = "Day 1";
+    let isSingleMode = false;
+    let isDragging = false;
+    let dragMoved = false;
+    let startX = 0;
+    let startScrollLeft = 0;
 
-      tabsEl.addEventListener("click", (e) => {
-        const target = e.target.closest(".day-tab");
-        if (!target) return;
-        activeFilter = target.dataset.day;
-        document.querySelectorAll(".day-tab").forEach((b) => {
-          b.classList.toggle("active", b.dataset.day === activeFilter);
-        });
-        renderCards();
-        if (activeFilter !== "ALL") {
-          containerEl.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+    function buildTabs() {
+      scrollerEl.innerHTML = itinerary
+        .map(
+          (d, idx) =>
+            `<button class="day-btn ${idx === 0 ? "active" : ""}" type="button" data-day="${d.day}">${d.day} ${d.date}</button>`
+        )
+        .join("");
+    }
+
+    function setActiveTab(dayKey) {
+      selectedDay = dayKey;
+      document.querySelectorAll(".day-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.day === dayKey);
       });
     }
 
-    function renderCards() {
-      const list = activeFilter === "ALL" ? days : days.filter((d) => d.day === activeFilter);
-      containerEl.innerHTML = list
+    function renderItinerary() {
+      const list = isSingleMode ? itinerary.filter((d) => d.day === selectedDay) : itinerary;
+      daysContainerEl.innerHTML = list
         .map(
           (d) => `
-          <article class="day-card">
-            <div class="day-header">
-              <h2 class="day-title">${d.day}：${d.title}</h2>
-              <span class="day-date">${d.date}</span>
+          <article class="day-card" id="card-${d.day.replace(/\s+/g, "-")}">
+            <div class="day-head">
+              <div class="day-title-wrap">
+                <span class="day-tag">${d.day}・${d.date}</span>
+                <h2 class="day-title">${d.title}</h2>
+              </div>
+              <a class="map-route-btn" href="${d.mapLink}" target="_blank" rel="noopener noreferrer">
+                🗺️ 開啟當日路線 Google Maps
+              </a>
             </div>
-            <div class="grid-2">
-              <div class="section-box">
-                <h3>行程與推薦餐廳</h3>
-                <ul>
-                  ${d.schedule.map((item) => `<li>${item}</li>`).join("")}
+            <div class="cards-grid">
+              <div class="box">
+                <h3>🏮 行程時段・景點與美食地圖</h3>
+                ${d.items
+                  .map(
+                    (it) => `
+                    <div class="timeline-item">
+                      <span class="time-label">${it.time}</span>
+                      <p class="item-main">${it.desc}</p>
+                      <div class="pin-links">
+                        ${it.pins
+                          .map(
+                            (p) =>
+                              `<a class="gmap-pill ${p.food ? "food" : ""}" href="${p.url}" target="_blank" rel="noopener noreferrer">${p.label} ↗</a>`
+                          )
+                          .join("")}
+                      </div>
+                    </div>
+                  `
+                  )
+                  .join("")}
+              </div>
+              <div class="box">
+                <h3>🚃 詳細交通工具與票券</h3>
+                <ul class="transport-list">
+                  ${d.transport.map((t) => `<li>${t}</li>`).join("")}
                 </ul>
               </div>
-              <div class="section-box transport-box">
-                <h3>詳細交通工具與票券</h3>
-                <ul>
-                  ${d.transport.map((item) => `<li>${item}</li>`).join("")}
-                </ul>
-              </div>
             </div>
-            <div class="note-box">
-              <strong>提醒：</strong>${d.note}
+            <div class="tip-strip">
+              <strong>旅帖叮嚀：</strong>${d.tip}
             </div>
           </article>
         `
@@ -544,8 +1043,123 @@
         .join("");
     }
 
-    renderTabs();
-    renderCards();
+    // 支援滑鼠與觸控自由拖拉天數列，且拖拉後不會誤觸點擊
+    scrollerEl.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      isDragging = true;
+      dragMoved = false;
+      startX = e.clientX;
+      startScrollLeft = scrollerEl.scrollLeft;
+      scrollerEl.classList.add("dragging");
+    });
+
+    window.addEventListener("pointermove", (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 5) {
+        dragMoved = true;
+      }
+      scrollerEl.scrollLeft = startScrollLeft - dx * 1.15;
+    });
+
+    window.addEventListener("pointerup", () => {
+      if (!isDragging) return;
+      isDragging = false;
+      scrollerEl.classList.remove("dragging");
+      setTimeout(() => {
+        dragMoved = false;
+      }, 0);
+    });
+
+    scrollerEl.addEventListener("click", (e) => {
+      if (dragMoved) return;
+      const btn = e.target.closest(".day-btn");
+      if (!btn) return;
+      const dayKey = btn.dataset.day;
+      setActiveTab(dayKey);
+      if (isSingleMode) {
+        renderItinerary();
+        window.scrollTo({ top: document.querySelector(".sticky-nav").offsetTop, behavior: "smooth" });
+      } else {
+        const targetCard = document.getElementById(`card-${dayKey.replace(/\s+/g, "-")}`);
+        if (targetCard) {
+          targetCard.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    });
+
+    scrollLeftBtn.addEventListener("click", () => {
+      scrollerEl.scrollBy({ left: -240, behavior: "smooth" });
+    });
+
+    scrollRightBtn.addEventListener("click", () => {
+      scrollerEl.scrollBy({ left: 240, behavior: "smooth" });
+    });
+
+    showAllBtn.addEventListener("click", () => {
+      isSingleMode = false;
+      showAllBtn.classList.add("active");
+      singleModeBtn.classList.remove("active");
+      renderItinerary();
+    });
+
+    singleModeBtn.addEventListener("click", () => {
+      isSingleMode = true;
+      singleModeBtn.classList.add("active");
+      showAllBtn.classList.remove("active");
+      renderItinerary();
+    });
+
+    // 版畫光影模式切換
+    themeBtn.addEventListener("click", () => {
+      const isNight = document.body.classList.toggle("night-cut");
+      themeIcon.textContent = isNight ? "☀️" : "🌙";
+      themeLabel.textContent = isNight ? "切換日光和紙" : "切換夜燈剪影";
+    });
+
+    // 互動行前檢核清單
+    const STORAGE_KEY = "fukuoka_1227_checklist_v1";
+    const checklistGridEl = document.getElementById("checklistGrid");
+    const progressTextEl = document.getElementById("progressText");
+
+    function getSavedChecks() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch {
+        return {};
+      }
+    }
+
+    function renderChecklist() {
+      const saved = getSavedChecks();
+      checklistGridEl.innerHTML = checklistItems
+        .map((item) => {
+          const checked = Boolean(saved[item.id]);
+          return `
+            <label class="check-item ${checked ? "done" : ""}">
+              <input type="checkbox" data-id="${item.id}" ${checked ? "checked" : ""} />
+              <span>${item.text}</span>
+            </label>
+          `;
+        })
+        .join("");
+
+      const doneCount = Object.values(saved).filter(Boolean).length;
+      progressTextEl.textContent = `已完成 ${doneCount} / ${checklistItems.length}`;
+    }
+
+    checklistGridEl.addEventListener("change", (e) => {
+      const checkbox = e.target.closest("input[type='checkbox']");
+      if (!checkbox) return;
+      const saved = getSavedChecks();
+      saved[checkbox.dataset.id] = checkbox.checked;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+      renderChecklist();
+    });
+
+    buildTabs();
+    renderItinerary();
+    renderChecklist();
   </script>
 </body>
 </html>
